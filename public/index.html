@@ -1,47 +1,47 @@
 <!DOCTYPE html>
-  <html lang="id">
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CORS Proxy</title>
-    <style>
-      body { font-family: Arial, sans-serif; margin: 20px; }
-      input, textarea { width: 100%; padding: 10px; margin-bottom: 10px; }
-      button { padding: 10px 20px; }
-      pre { background: #f4f4f4; padding: 10px; overflow-x: auto; }
-    </style>
-  </head>
-  <body>
-    <h1>CORS Proxy</h1>
-    <p>Masukkan URL target dan header (opsional) untuk melakukan permintaan melalui proxy CORS.</p>
-    <input type="text" id="targetUrl" placeholder="https://example.com/api">
-    <textarea id="authHeader" placeholder="Authorization header (contoh: Basic ...)" rows="4"></textarea>
-    <button onclick="fetchData()">Fetch</button>
-    <pre id="response"></pre>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CORS Proxy</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 20px; }
+    input, textarea { width: 100%; padding: 10px; margin-bottom: 10px; }
+    button { padding: 10px 20px; }
+    pre { background: #f4f4f4; padding: 10px; overflow-x: auto; }
+  </style>
+</head>
+<body>
+  <h1>CORS Proxy</h1>
+  <p>Masukkan URL target dan header (opsional) untuk melakukan permintaan melalui proxy CORS.</p>
+  <input type="text" id="targetUrl" placeholder="https://example.com/api">
+  <textarea id="authHeader" placeholder="Authorization header (contoh: Basic ...)" rows="4"></textarea>
+  <button onclick="fetchData()">Fetch</button>
+  <pre id="response"></pre>
 
-    <script>
-      async function fetchData() {
-        const targetUrl = document.getElementById('targetUrl').value;
-        const authHeader = document.getElementById('authHeader').value;
-        const proxyUrl = '/cors/';
-        const url = proxyUrl + targetUrl;
+  <script>
+    async function fetchData() {
+      const targetUrl = document.getElementById('targetUrl').value;
+      const authHeader = document.getElementById('authHeader').value;
+      const proxyUrl = '/cors/';
+      const url = proxyUrl + targetUrl;
 
-        try {
-          const headers = {
-            'Accept': 'application/json',
-            'User-Agent': navigator.userAgent
-          };
-          if (authHeader) {
-            headers['Authorization'] = authHeader;
-          }
-
-          const response = await fetch(url, { headers });
-          const data = await response.text();
-          document.getElementById('response').textContent = data;
-        } catch (error) {
-          document.getElementById('response').textContent = 'Error: ' + error.message;
+      try {
+        const headers = {
+          'Accept': 'application/json',
+          'User-Agent': navigator.userAgent
+        };
+        if (authHeader) {
+          headers['Authorization'] = authHeader;
         }
+
+        const response = await fetch(url, { headers });
+        const data = await response.text();
+        document.getElementById('response').textContent = data;
+      } catch (error) {
+        document.getElementById('response').textContent = 'Error: ' + error.message;
       }
-    </script>
-  </body>
-  </html>
+    }
+  </script>
+</body>
+</html>
