@@ -44,7 +44,7 @@ module.exports = async (req, res) => {
 
     // Tangani permintaan OPTIONS untuk CORS preflight
     if (req.method === 'OPTIONS') {
-      return res.status(200).json({}, { headers });
+      return res.status(200).send(null, { headers });
     }
 
     // Periksa status respons
