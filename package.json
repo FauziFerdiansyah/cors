@@ -1,0 +1,15 @@
+{
+  "name": "cors-proxy",
+  "version": "1.0.0",
+  "description": "CORS proxy for Vercel",
+  "main": "index.js",
+  "scripts": {
+    "start": "vercel dev"
+  },
+  "dependencies": {
+    "node-fetch": "^2.6.7"
+  },
+  "devDependencies": {
+    "vercel": "^28.0.0"
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "version": 2,
+  "routes": [
+    {
+      "src": "/cors/(.*)",
+      "dest": "/api/cors.js"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/public/$1"
+    }
+  ],
+  "functions": {
+    "api/cors.js": {
+      "memory": 128,
+      "maxDuration": 10
+    }
+  }
+}
